@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Latihan 1</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<style type="text/css">
+		.dynamicForm {margin: 20px auto 0;}
+		.dynamicForm input {padding: 2px}
+	</style>
+</head>
+<body>
+<div class="container dynamicForm">
+	<div class="row">
+		<div class="form-group">
+			<label>Jumlah Form</label>
+			<input type="text" name="" id="total"> <button type="button" name="">GO</button>
+		</div>
+	</div>
+	<div class="col-md-3">
+		<div class="result"></div>
+		<div id="button"></div>
+	</div>
+</div>
+
+<script type="text/javascript" src="jquery-3.3.1.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$("#total").keypress(function(event){
+			if(event.which < 48 || event.which > 57){
+				return false
+			}else{
+				return true
+			}
+		})
+
+
+		$('button[type=button]').click(function(){
+			var total = $("#total").val()
+
+			if(total == ""){
+				$("#total").css({"border":"2px solid #d14", "background-color": "rgb(243, 166, 166)"})
+			}else{
+				$("#total").removeAttr("style").val("")
+				$("label").text("Tambah Form")
+				
+				for(i = 1; i <= total; i++){
+					$("<div class='form-group'><input type='text' class='form-control' placeholder='Input name'/></div>").appendTo(".result");
+				}
+
+				$("#button").html("<button type='button'>Save</button>")
+			}
+		})
+	})
+</script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Latihan 2</title>
+	<style type="text/css">
+		div {float: left; margin-right: 20px; border: 1px solid #ccc;}
+		.active {background-color: red; color: white; padding:5px 10px}
+	</style>
+</head>
+<body>
+<div data-title="Jack">
+	<img src="../../img/avatar.png">
+	<p></p>
+</div>
+<div data-title="Mila">
+	<img src="../../img/avatar2.png">
+	<p></p>
+</div>
+<div data-title="Raisa">
+	<img src="../../img/avatar3.png">
+	<p></p>
+</div>
+<script type="text/javascript" src="../../jquery-3.3.1.min.js"></script>
+<script type="text/javascript">
+	$('div').click(function(){
+		$('div').children('p').empty();
+		$('div').children('p').removeClass("active");
+
+		var name = $(this).attr("data-title");
+
+		$(this).children('p').html("<p>My name is "+name+"</p>").addClass("active");
+	})
+</script>
+</body>
+</html>

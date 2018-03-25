@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Latihan 3</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<style type="text/css">
+		.container {margin: 20px auto;}
+		.error {background-color: #f5d3d6;border-color: #dc3545;}
+		.error:focus {background-color: #f5d3d6;border-color: #dc3545;}
+		.search {margin-bottom: 20px;}
+		.search input {padding: 2px 5px}
+		ol {list-style: none}
+	</style>
+</head>
+<body>
+<div class="container">
+	<div class="row">
+		<div class="col-sm">
+	      <div class="form-group">
+		    <input type="text" class="form-control" id="firstname" placeholder="First Name">
+		  </div>
+	    </div>
+	</div>
+	<div class="search"><input type="text" name="" id="search" placeholder="search.."></div>
+	<ol></ol>
+</div>
+<script type="text/javascript" src="jquery-3.3.1.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		var name = $("#firstname")
+		var search = $("#search")
+
+		$(name).keypress(function(event){
+			if(event.which == 13){
+				if(name.val() != ""){
+					name.removeClass("error")
+					$("ol").append("<li class='item' data-type='"+name.val().toLowerCase()+"'>"+name.val()+"</li>")
+					name.val("")
+				}else{
+					name.addClass("error")
+				}
+			}
+		})
+
+		search.keyup(function() {
+			var searchin = $(this).val();
+
+			switch(true){	
+				case searchin === '':
+					$(".item").css('display', 'block');
+					break;
+				default:
+					$(".item").css('display', 'none');
+					$(".item").filter('[data-type*="' + searchin.toLowerCase() + '"]').css('display', 'block');	
+					break;
+			}
+		});
+	})
+</script>
+</body>
+</html>

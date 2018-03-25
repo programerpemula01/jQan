@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Pemandangan</title>
+	<style type="text/css">
+		* {padding: 0; margin: 0}
+		body {overflow: hidden;}
+		.bg{position: absolute; bottom:0; left:0;width: 100%; height: 123px;background-image: url('img/bg4.png')}
+		.layer{position: absolute;bottom: 50px}
+		.orang {height: 95px; overflow: hidden}
+		.bg0 {background-image: url('img/bg0.png'); width: 100%; height: 700px}
+		.building {position: absolute;bottom:101px;left: 40px}
+		.building > img {width: 650px}
+	</style>
+</head>
+<body>
+<div class="bg0"></div>
+<div class="bg"></div>
+<div class="layer">
+	<img src="img/asset_motor-1.png" class="motor1">
+</div>
+</div>
+<div class="layer-building">
+	<div class="building">
+		<img src="img/building-clipart-vector-12.png">
+	</div>
+</div>
+<div class="wrap">
+	<div class="orang">
+		<img src="img/org1.png">
+	</div>
+	<div class="orang">
+		<img src="img/org5.png">
+	</div>
+<script type="text/javascript" src="jquery-3.3.1.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$('.orang').css({'position': 'absolute', 'bottom': '122px','left': '704px'})
+		$('.orang:nth-child(2)').css({'position': 'absolute', 'bottom': '122px','left': '800px'})
+
+		function loop() {
+
+	        $('.layer').css({left: '-175px', 'z-index':'999'});
+	        $('.layer').animate ({ left: '+=120%'}, 8000, function() {
+	        	loop();
+	        });
+	    }
+
+	    function loopAwan() {
+
+	        $('.bg0').animate ({ 'background-position': '-='+1000}, 40000, function() {
+	        	loopAwan();
+	        });
+	    }
+
+	    function loopOrang(imgHeight_sprite,class_sprite) {
+	    	var numImgs_sprite = 5;
+			var cont_sprite = 0;
+			var animation_sprite = setInterval(function(){
+				var position_sprite =  -1 * (cont_sprite*imgHeight_sprite);
+				$('.'+class_sprite).children('img').css('margin-top', position_sprite);
+				cont_sprite++;
+				if(cont_sprite == numImgs_sprite){
+					cont_sprite = 0;
+				}
+			},300);
+	    }
+
+	    loop();
+	    loopOrang(95,'orang');
+	    loopAwan();
+	})
+</script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Latihan 1</title>
+	<style type="text/css">
+		* {padding: 0; margin: 0}
+		div {margin: 20px;}
+		button {padding: 3px 10px}
+		input {padding: 3px 10px}
+		table {margin-left: 20px; width: 300px}
+		tr {cursor: pointer;}
+		tbody > tr:hover{background-color: yellow;}
+	</style>
+</head>
+<body>
+<div>
+<input type="text" name="" id="save"> <button>Simpan</button>
+</div>
+
+<table border="1" cellspacing="0">
+	<thead>
+		<tr>
+			<th width="50">No.</th>
+			<th>Nama</th>
+		</tr>
+	</thead>
+	<tbody></tbody>
+</table>
+
+<script type="text/javascript" src="../../jquery-3.3.1.min.js"></script>
+<script type="text/javascript">
+$("button").click(function(){
+	var name = $("#save").val();
+	var total = $("tbody").children("tr").length;
+	var urut = total + 1
+
+	if(name == ""){
+		alert("Isi dulu coy!");
+	}else{
+		$("tr").removeAttr("style");
+		$("tbody").append("<tr><td>"+urut+"</td><td>"+name+"</td></tr>");
+		$("#save").val("");
+	}
+});
+
+$(document).on('click', 'tbody > tr', function(){
+	$("tr").removeAttr("style");
+
+	$(this).css({"background-color":"yellow", "font-weight":"bold", "text-transform":"uppercase"});
+	$(this).nextAll().css({"background-color":"yellow", "font-weight": "bold", "text-transform":"uppercase"});
+})
+
+</script>
+</body>
+</html>

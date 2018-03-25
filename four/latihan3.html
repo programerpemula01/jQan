@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Latihan 1</title>
+  <style>
+  	* {padding: 0; margin: 0;}
+    button {display: block; margin: 30px auto 0; padding: 5px 10px}
+    img {position: absolute;top: 200px;left: 0}
+  </style>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+
+  <div>
+    <button id="stop">Stop</button>
+    <img src="image/Shuriken.png" width="150">
+  </div>
+<script>
+$(document).ready(function(){
+  atas();
+
+  function atas()
+  {
+    $('img').animate({'left':'610px', 'rotasinya': '+=360'}, {
+      step: function(now,fx) {
+        $(this).css({'transform':'rotate('+now+'deg)'});
+        atas()
+      },
+      duration:200
+    }, 'liner');
+  }
+
+  $("button").click(function(){
+    var id = $(this).attr("id");
+    if(id == 'stop'){
+      $("img").clearQueue().stop();
+      $(this).text("start");
+      $(this).attr("id", "start")  
+    }
+    if(id == 'start'){
+      atas();
+      $(this).text("stop");
+      $(this).attr("id", "stop")  
+    }
+  })
+})
+</script>
+</body>
+</html>

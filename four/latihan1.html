@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Latihan 1</title>
+  <style>
+  	div {width:100px;height:100px;border-radius: 100%; margin: 0 20px; float:left;}
+  	.red {background-color: red}
+  	.yellow {background-color: yellow}
+  	.green {background-color: green;}
+  </style>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+<button data-color="red">Merah</button> <button data-color="yellow">Kuning</button> <button data-color="green">Hijau</button>
+
+<br><br>
+
+<div class="red"></div>
+<div class="yellow"></div>
+<div class="red"></div>
+<div class="green"></div>
+<div class="yellow"></div>
+<div class="red"></div>
+<div class="red"></div>
+<div class="green"></div>
+
+<script>
+	$("button").click(function(){
+		color = $(this).attr("data-color");
+
+		$("div").animate({'margin-top': 0}, 800);
+
+		$("."+color).each(function(){
+			$(this).animate({'margin-top':'300px'}, 1000);
+		})
+	})
+</script>
+</body>
+</html>

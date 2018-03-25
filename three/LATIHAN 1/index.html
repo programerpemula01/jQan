@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Latihan 1</title>
+	<style type="text/css">
+		.wrapper {width: 800px;height: 500px; border: 1px solid #000; position: relative; overflow: hidden}
+	</style>
+</head>
+<body>
+	<div class="wrapper"></div>
+<script type="text/javascript" src="jquery-3.3.1.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$('<div class="ball"></div>').prependTo('.wrapper');
+		$('.ball').css({'width':'50px', 'height':'50px', 'border-radius':'50%', 'background-color':'red', 'position':'absolute', 'left':'0'});
+
+		function loop() {
+	        $('.ball').css({top:0});
+	        $('.ball').animate ({top: '+=300px', left: '+=500px', 'width':'+=150px', 'height':'+=150px'}, 3000, function() {
+	        	$('.ball').animate({'top':'0', left : '0', 'width': '50px', 'height': '50px'}, 3000, function(){
+	            	loop();
+	        	})
+	        });
+	    }
+
+	    loop();
+	})
+</script>
+</body>
+</html>

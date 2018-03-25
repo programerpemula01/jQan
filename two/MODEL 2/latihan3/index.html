@@ -1,0 +1,89 @@
+<html>
+	<head>
+		<title>Puzzle</title>
+		<style>
+			* {padding: 0; margin:0;}
+			.list {float: left;border: 2px solid #000; cursor: pointer;}
+			.active, .active2 {border-color: red;}
+			.col-md-4 {padding: 0 !important}
+
+			.no {font-size: 80px; position: absolute; text-align: center; background-color: rgba(0,0,0,0.2); width: 100%; min-height: 100%; margin: 0 !important;color: red; padding-top: 40%}
+		</style>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+	</head>
+	<body>
+		<div class="container">
+			<div class="col-md-7 col-md-offset-2 wrap">
+				<div class="list item col-md-4 col-sm-4" data-sort='1'><img src="image/image3.jpg" alt="" style="width: 100%" data-img="3"></div>
+				<div class="list item col-md-4 col-sm-4" data-sort='2'><img src="image/image9.jpg" alt="" style="width: 100%" data-img="9"></div>
+				<div class="list item col-md-4 col-sm-4" data-sort='3'><img src="image/image4.jpg" alt="" style="width: 100%" data-img="4"></div>
+				<div class="list item col-md-4 col-sm-4" data-sort='4'><img src="image/image1.jpg" alt="" style="width: 100%" data-img="1"></div>
+				<div class="list item col-md-4 col-sm-4" data-sort='5'><img src="image/image7.jpg" alt="" style="width: 100%" data-img="7"></div>
+				<div class="list item col-md-4 col-sm-4" data-sort='6'><img src="image/image5.jpg" alt="" style="width: 100%" data-img="5"></div>
+				<div class="list item col-md-4 col-sm-4" data-sort='7'><img src="image/image8.jpg" alt="" style="width: 100%" data-img="8"></div>
+				<div class="list item col-md-4 col-sm-4" data-sort='8'><img src="image/image2.jpg" alt="" style="width: 100%" data-img="2"></div>
+				<div class="list item col-md-4 col-sm-4" data-sort='9'><img src="image/image6.jpg" alt="" style="width: 100%" data-img="6"></div>
+			</div>
+		</div>
+		<script src="jquery.js"></script>
+		<script>
+		$(document).ready(function(){
+			
+			childTainer	= $(".wrap").children(".item");
+			totalchild	= childTainer.length;
+
+			$(".item").click(function(){
+
+				if(!childTainer.hasClass("active")){
+					$(this).addClass("active").prepend("<h1 class='no'>1</h1>");
+
+					 image1 = $(".active").children("img").attr("src");
+					 data1 = $(".active").children("img").attr("data-img");
+				}else{
+					$(this).addClass("active2");
+					 image2 = $(".active2").children("img").attr("src");
+					 data2 = $(".active2").children("img").attr("data-img");
+
+					$(".active").children("img").attr("src", image2);
+					$(".active").children("img").attr("data-img", data2);
+					$('.no').remove();
+				}
+
+				$(".active2").children("img").attr("src", image1);
+				$(".active2").children("img").attr("data-img", data1);
+				
+				if($(".active2").attr("data-sort") == $(".active2").children("img").attr("data-img"))
+				{
+					$(".active2").addClass("yeah")
+				}
+
+				if($(".active2").attr("data-sort") != $(".active2").children("img").attr("data-img")){
+					$(".active2").removeClass("yeah")
+				}
+
+				if($(".active").attr("data-sort") == $(".active").children("img").attr("data-img"))
+				{
+					$(".active").addClass("yeah")
+				}
+
+				if($(".active").attr("data-sort") != $(".active").children("img").attr("data-img")){
+					$(".active").removeClass("yeah")
+				}
+
+				if(childTainer.hasClass("active") && childTainer.hasClass("active2")){
+					$("div").removeClass("active");
+					$("div").removeClass("active2");
+				}
+
+				if($(".wrap").children(".yeah").length == totalchild){
+					setTimeout(function() { alert("Selamat anda berhasil"); location.reload(); }, 300);
+					//location.reload();
+				}
+							
+			})
+
+			
+		})
+		</script>
+	</body>
+</html>

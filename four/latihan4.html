@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Latihan 1</title>
+  <style>
+  	* {padding: 0; margin: 0;}
+    td {width: 30%;}
+    h3 {line-height: 60px !important}
+  </style>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h3 class="text-center">My Data</h3>
+      <table class="table">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Email</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr id="row1">
+            <th scope="row">1</th>
+            <td>Achmad</td>
+            <td>Robbani</td>
+            <td>robbani.dumet@gmail.com</td>
+            <th><button class="btn btn-danger" id="1">Delete</button></th>
+          </tr>
+          <tr id="row2">
+            <th scope="row">2</th>
+            <td>Ekky</td>
+            <td>Ridyanto</td>
+            <td>eki.dumet@gmail.com</td>
+            <th><button class="btn btn-danger" id="2">Delete</button></th>
+          </tr>
+          <tr id="row3">
+            <th scope="row">3</th>
+            <td>Irwan</td>
+            <td>Deswitansyah</td>
+            <td>irwan.dumet@gmail.com</td>
+            <th><button class="btn btn-danger" id="3">Delete</button></th>
+          </tr>
+          <tr id="row4">
+            <th scope="row">4</th>
+            <td>Fachrul</td>
+            <td>Ahaddin</td>
+            <td>fachrul.dumet@gmail.com</td>
+            <th><button class="btn btn-danger" id="4">Delete</button></th>
+          </tr>
+          <tr id="row5">
+            <th scope="row">5</th>
+            <td>Maykhel</td>
+            <td>David</td>
+            <td>maykhel.dumet@gmail.com</td>
+            <th><button class="btn btn-danger" id="5">Delete</button></th>
+          </tr>
+          <tr id="row6">
+            <th scope="row">6</th>
+            <td>Her</td>
+            <td>Nowo</td>
+            <td>eno.dumet@gmail.com</td>
+            <th><button class="btn btn-danger" id="6">Delete</button></th>
+          </tr>
+          <tr id="row7">
+            <th scope="row">7</th>
+            <td>Fahrizal</td>
+            <td>Aja</td>
+            <td>rizal.dumet@gmail.com</td>
+            <th><button class="btn btn-danger" id="7">Delete</button></th>
+          </tr>
+          <tr id="row8">
+            <th scope="row">8</th>
+            <td>Surya</td>
+            <td>Gobel</td>
+            <td>surya.dumet@gmail.com</td>
+            <th><button class="btn btn-danger" id="8">Delete</button></th>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script>
+$(document).ready(function(){
+  
+  $("td").dblclick(function(){
+
+    var value = $(this).text();
+    var test  = $("input").val();
+
+    $(".edited").text(test);
+    $(".edited").removeClass('edited');
+    $(this).addClass('edited');
+    $(this).html("<input type='text' class='form-control-sm' value='"+value+"'>");
+    $('input').focus();
+  });
+
+  $(document).on("keypress", "input", function(event){
+     var test  = $(this).val();
+
+     if(event.which == 13){
+        $(".edited").text(test);
+        $(".edited").removeClass('edited');
+        alert("Data has been edited!");
+     }
+  })
+
+  $("button").click(function(){
+    var id = $(this).attr("id");
+
+    if(confirm("Delete this data?"))
+    {
+      $("#row"+id).fadeOut("slow", function(){
+        $("#row"+id).remove();
+        alert("Data has been deleted!");
+      })
+    }
+  });
+})
+</script>
+</body>
+</html>

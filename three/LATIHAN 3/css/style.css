@@ -1,0 +1,55 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    background-image: url('../img/background.jpg');
+    background-repeat: no-repeat;
+	background-size: cover;
+	background-attachment: fixed;
+}
+.container-fluid {
+	display: none
+}
+.bg {
+	background-image: url('../img/bg.jpg');
+	height: 100%;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	overflow: hidden;
+}
+.navbar-inverse {
+    background-color: rgba(0,0,0,0.4);
+    border-color: none !important;
+}
+.navbar-inverse .navbar-nav > li > a {
+    color: #ffffff;
+}
+.line {
+    width: 0;
+    height: 3px;
+    background-color: #87CEEB;
+    position: absolute;
+    top: 150px;
+    left: 56px;
+}
+.bg h1 {
+	font-size: 0;
+	position: absolute;
+	top: -107px;
+	left: 150px;
+	color: #fff;
+}
+
+/*GALLERY*/
+
+div img {
+	cursor: pointer
+}
+
+.row {
+	margin-top: 70px;
+}
+
+.imageBig {
+	display: none;
+}

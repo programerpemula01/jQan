@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Latihan 2</title>
+	<style type="text/css">
+		.left {float: left; border: 1px solid #ccc; width: 721px;padding: 10px}
+		.left img {margin-right: 20px; border:1px solid #fff000;}
+		.active {background-color: red; color: white; padding:5px 10px}
+		.right {width: 500px;margin:0 20px; float:right;}
+	</style>
+</head>
+<body>
+<div class="left">
+	
+		<img src="../../img/avatar.png" title="Jarwo">
+	
+		<img src="../../img/avatar2.png" title="Titi">
+	
+		<img src="../../img/avatar3.png" title="Inem">
+
+		<img src="../../img/avatar04.png" title="Frank">
+
+		<img src="../../img/avatar5.png" title="Jojo">
+
+</div>
+<div class="right"></div>
+<script type="text/javascript" src="../../jquery-3.3.1.min.js"></script>
+<script type="text/javascript">
+	$('img').click(function(){
+		var name = $(this).attr("src");
+
+		$('.right').html("<img src='"+name+"' style='width:100%'>");
+	})
+</script>
+</body>
+</html>

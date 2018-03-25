@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Latihan 3</title>
+	<style type="text/css">
+		* {padding: 0; margin: 0}
+		.dark {background-color: rgba(0,0,0,0.3); width: 100%; height: 100%;min-height: 100% !important;position: absolute;top:0;left:0;}
+		button {margin: 10px 20px !important}
+		.bg {background-color: #0bffb2; padding: 20px; z-index: 9999;position: relative}
+		span.glyphicon {position: absolute;right:10px;top:10px; cursor: pointer}
+		.wrap {position: absolute; left: 50%;margin-left: -250px; width: 500px;}
+		#result {margin-left: 20px}
+	</style>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+
+<body>
+<button class="btn btn-primary">Tampil Form</button>
+<p id="result"></p>
+
+<script type="text/javascript" src="../../jquery-3.3.1.min.js"></script>
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<script type="text/javascript">
+	$('button').click(function(){
+		$('<div class="dark"></div>').prependTo('body');
+		$('button').after('<div class="wrap"><div class="bg"><div class="form-group"><label>Name</label><input type="text" id="name" class="form-control"></div><div class="form-group"><label>Hobby</label><input type="text" id="hobby" class="form-control"></div><div class="form-group"><input type="button" id="show" class="btn btn-warning" value="Show"></div><span class="glyphicon glyphicon-remove"></span></div></div>')
+	});
+
+	$(document).on('click', 'span.glyphicon', function(){
+		$('.wrap').remove();
+		$('.dark').remove();
+	});
+
+	$(document).on('click', '#show', function(){
+		var name = $("#name").val();
+		var hobby = $("#hobby").val();
+
+		if(name == "" || hobby == ""){
+			alert("Wajib Diisi!")
+		}else{
+			alert("Data anda berhasil disimpan!");
+			$("#name").val('');
+			$("#hobby").val('');
+			$('.wrap').remove();
+			$('.dark').remove();
+
+			$("#result").html("Nama anda <strong>"+name+"</strong>, dan hobby anda <strong>"+hobby+"</strong>");
+		}
+
+		
+	});
+</script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Latihan 1</title>
+	<style type="text/css">
+		.success {color: white; background: green; padding:5px 15px}
+		div {margin-top: 10px}
+	</style>
+</head>
+<body>
+<p>Silakan isi form di bawah ini..</p>
+<input type="text" id="name"><button>tampilkan</button>
+<div></div>
+<script type="text/javascript" src="../../jquery-3.3.1.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("button").click(function(){
+
+			var texts = $("#name").val().toUpperCase();
+			$("div").html(" Welcome: <span>"+texts+"</span>")
+			
+			$("div span").addClass("success");;
+			$("#name").val('')
+		})
+	})
+</script>
+</body>
+</html>

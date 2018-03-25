@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Latihan 1</title>
+	<style type="text/css">
+		* {padding: 0; margin: 0}
+		li { width: 170px; height:170px;float: left; margin-right: 20px; font-size: 24px; text-align: center; line-height: 170px; cursor: pointer;border:3px solid #333; margin-bottom: 10px; list-style: none}
+		li:nth-child(1){background-color: red;}
+		li:nth-child(2){background-color: yellow;}
+		li:nth-child(3){background-color: green;}
+		div {text-align: center;  font-size: 24px; }
+	</style>
+</head>
+<body>
+
+<ul>
+	<li data-color="red">DUMET School</li>
+	<li data-color="yellow">Terbaik</li>
+	<li data-color="green">Nomor Satu</li>
+</ul>
+
+ <div></div>
+
+<script type="text/javascript" src="../../jquery-3.3.1.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$("li").click(function(){
+		var tinggi 	= $(this).height();
+		var jarak 	= $(this).outerHeight(true);
+		var child 	= $("ul").children().length; // menghitung banyak child (li) dalam parent (ul)
+		var total 	= jarak*child;
+		var color 	= $(this).attr("data-color");
+		var inText	= $(this).text();
+
+		$("div").width(total).height(total).css({'line-height': tinggi+'px', 'background-color': color}).offset({top: jarak}).text(inText);
+
+	})
+})
+</script>
+</body>
+</html>

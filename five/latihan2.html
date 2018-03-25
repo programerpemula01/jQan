@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Dynamic Form 2</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<style type="text/css">
+		.container {margin: 20px auto;}
+		.error > input, .error > textarea, .error > select {border-color: #dc3545;}
+		.form-group {position: relative;}
+		.form-group .help-block{position: absolute; bottom: -24px}
+		.row {margin-bottom: 20px}
+	</style>
+</head>
+<body>
+<div class="container dynamicForm">
+	<div class="row">
+		<div class="col-sm">
+	      <div class="form-group">
+		    <input type="text" class="form-control" id="firstname" placeholder="First Name">
+		    <span class="help-block"></span>
+		  </div>
+	    </div>
+	    <div class="col-sm">
+	      <div class="form-group">
+		    <input type="text" class="form-control" id="firstname" placeholder="Last Name">
+		  	<span class="help-block"></span>
+		  </div>
+	    </div>
+	    <div class="col-sm">
+	      <div class="form-group">
+		    <input type="email" class="form-control" id="email" placeholder="Enter email">
+		  	<span class="help-block"></span>
+		  </div>
+	    </div>
+	    <div class="col-sm">
+	      <div class="form-group">
+		    <button type="button" class="btn btn-primary add">Add</button>
+		  </div>
+	    </div>
+	</div>
+</div>
+<div class="container">
+	<div class="row">
+		<div class="col-sm">
+			<button type="button" class="btn btn-warning" id="save">Save</button>
+		</div>
+	</div>
+</div>
+<script type="text/javascript" src="jquery-3.3.1.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+
+		function valid() {
+			if(! $(".dynamicForm input[type=text], .dynamicForm input[type=email], .dynamicForm select, .dynamicForm textarea").value){
+		        $("input[type=text], input[type=email], select, textarea").each(function(){
+		            if($(this).val() == ""){
+		                $(this).parents(".form-group").addClass("error")
+		                $(this).next(".help-block").addClass("text-danger").text("Wajib Diisi!")
+		            }else{
+		                $(this).parents(".form-group").removeClass("error")
+		                $(this).next(".help-block").removeClass("text").empty()
+		            }
+		        });        
+		    }
+		}
+
+		$('.add').click(function(){
+			if($(this).hasClass("add")){
+				$(this).parents(".row").clone(true).appendTo(".dynamicForm");
+				$(".add").not(this).attr("class", "btn btn-danger del").text("Delete")
+				$(".form-group").removeClass("error")
+		        $(".help-block").removeClass("text").empty()
+		        $('.dynamicForm').find('div.row:last').find('input').each(function(){
+		        	$(this).val('')
+		        });
+			}else{
+				$(this).parents(".row").remove()
+			}
+		})
+
+		$("#save").click(function(){
+			valid()
+
+			if($(".error").length == 0 ){
+				alert("Success")
+			}
+	    })
+
+	    $("input").change(function(){
+	    	valid()
+	    })
+	})
+</script>
+</body>
+</html>
